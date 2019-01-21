@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ActionSheetPicker_3_0
 
 class ViewController: UIViewController {
 
@@ -18,3 +19,19 @@ class ViewController: UIViewController {
 
 }
 
+
+extension ViewController {
+	@IBAction func actionSheet(sender: UIButton) {
+		ActionSheetMultipleStringPicker.show(withTitle: "Multiple String Picker", rows: [
+			["One", "Two", "A lot"],
+			["Many", "Many more", "Infinite"]
+			], initialSelection: [2, 2], doneBlock: {
+				picker, indexes, values in
+				
+				print("values = \(values)")
+				print("indexes = \(indexes)")
+				print("picker = \(picker)")
+				return
+		}, cancel: { ActionMultipleStringCancelBlock in return }, origin: sender)
+	}
+}
